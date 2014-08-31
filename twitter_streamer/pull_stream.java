@@ -20,7 +20,7 @@ import twitter4j.conf.ConfigurationBuilder;
 public class pull_stream {
     public static void main(String args[]) throws IOException, InterruptedException, Exception
     {
-        if(true || args.length > 0 && args[0].equalsIgnoreCase("help"))
+        if(args.length > 0 && args[0].equalsIgnoreCase("help"))
         {
             displayHelp();
             System.exit(0);
