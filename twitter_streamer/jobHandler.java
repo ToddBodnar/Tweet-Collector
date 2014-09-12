@@ -44,7 +44,8 @@ public class jobHandler implements StatusListener{
                     theFile.createNewFile();
                 
             
-            out = new PrintStream(new FileOutputStream(theFile));
+            out = new PrintStream(new FileOutputStream(theFile,true));
+            
             
             }
             } catch (IOException ex) {
