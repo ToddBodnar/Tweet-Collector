@@ -61,7 +61,7 @@ public class jobHandler implements StatusListener{
 
             @Override
             public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                System.out.println("Request to delete status "+statusDeletionNotice.getStatusId()+" from user "+statusDeletionNotice.getUserId());
             }
 
             @Override
@@ -71,7 +71,7 @@ public class jobHandler implements StatusListener{
 
             @Override
             public void onScrubGeo(long userId, long upToStatusId) {
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                System.out.println("Request to delete geo info for "+userId+" up to post "+upToStatusId);
             }
 
             @Override
