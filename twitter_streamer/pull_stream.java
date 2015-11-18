@@ -45,7 +45,7 @@ public class pull_stream {
         String job = readProp(settings_file);
        
         String type = job.split(";")[0];
-        jobHandler theJob = null;
+        //jobHandler theJob = null;
         FilterQuery fq = new FilterQuery();
         
         if(type.equals("geo"))
@@ -112,13 +112,15 @@ public class pull_stream {
             settings.OAUTH_ACCESS_TOKEN = prop.getProperty("OAUTH_ACCESS_TOKEN");
             settings.OAUTH_ACCESS_TOKEN_SECERET = prop.getProperty("OAUTH_ACCESS_TOKEN_SECERET");
             
+            settings.API_OUTPUT = prop.getProperty("OUTPUT_TYPE").equalsIgnoreCase("api");
+            
             return prop.getProperty("JOB_CONFIG");
       }
     
     private static void displayHelp()
     {
         System.out.println("Twitter Stream Collector");
-        System.out.println("(c) Todd Bodnar 2014");
+        System.out.println("(c) Todd Bodnar 2014-2015");
         System.out.println();
         System.out.println("Settings File Key:");
         System.out.println();
@@ -131,6 +133,8 @@ public class pull_stream {
         System.out.println("\t1. geo;x1;y1;x2;y2\t\tCollect tweets in the given location, defined by lat and lon coords. x1 < x2, y1 < y2");
         System.out.println("\t2. keyword;alpha;beta;delta...\tCollect tweets with any of the given keywords");
         System.out.println("\t3. follow;u1;u2;u3...\t\tCollect tweets from users with id u1,u2,u3...");
+        System.out.println();System.out.println();
+        System.out.println("OUTPUT_TYPE\t\t\tEither API (default) or SIMPLE to either output the json from the api or a simplified, tsv (timestamp,userid,text)");
         
     }
 }

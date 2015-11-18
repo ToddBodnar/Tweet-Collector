@@ -52,8 +52,10 @@ public class jobHandler implements StatusListener{
                     Logger.getLogger(jobHandler.class.getName()).log(Level.SEVERE, null, ex);
                 }
         
-            
-        out.println(status.getId()+"|"+TwitterObjectFactory.getRawJSON(status)+"\n");
+            if(settings.API_OUTPUT)
+                out.println(status.getId()+"|"+TwitterObjectFactory.getRawJSON(status)+"\n");
+            else
+                out.println(status.getCreatedAt()+"\t"+status.getUser().getId()+"\t"+(status.getText().replace("\n", " ").replace("\t", " ")));
               
             }
 

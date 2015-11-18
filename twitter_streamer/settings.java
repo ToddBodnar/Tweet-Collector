@@ -17,4 +17,5 @@ public class settings {
     
     public static String OAUTH_ACCESS_TOKEN_SECERET;
     
+    public static boolean API_OUTPUT;
 }
