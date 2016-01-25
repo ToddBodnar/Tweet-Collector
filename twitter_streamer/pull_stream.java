@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import javax.swing.JOptionPane;
 import twitter4j.FilterQuery;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
@@ -33,6 +34,11 @@ public class pull_stream {
             System.out.println();
             System.out.println("If this seems wrong, then delete .pull_stream_run_lock");
             System.out.println("Goodbye");
+            try{
+            JOptionPane.showMessageDialog(null, "run lock is set, assuming another puller process is running.\nIf this seems wrong, then delete .pull_stream_run_lock. \nWill now quit so to not have multiple running collectors.\nGoodbye.");
+                    }
+            catch(Exception e)
+            {}
             System.exit(0);
         }
         runLock.createNewFile();
@@ -103,6 +109,18 @@ public class pull_stream {
         
         twitter.filter(fq);
         
+        try{
+            String possibleValues[] = new String[]{"Stop Collection"};
+            JOptionPane.showMessageDialog(null,
+"Now collecting data :\n"+type+" "+job+"\n\nDismiss this window to stop collection.", "Tweet Collector",JOptionPane.PLAIN_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Ok, stopping collection.");
+            System.exit(0);
+        }catch(Exception ex)
+        {
+            
+        }
+        
     }
     
     public static String readProp(Properties prop) throws Exception
@@ -120,7 +138,7 @@ public class pull_stream {
     private static void displayHelp()
     {
         System.out.println("Twitter Stream Collector");
-        System.out.println("(c) Todd Bodnar 2014-2015");
+        System.out.println("(c) Todd Bodnar 2014-2016");
         System.out.println();
         System.out.println("Settings File Key:");
         System.out.println();
